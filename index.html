@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+  <link href="dist/ez-confirm.min.css" rel="stylesheet">
+
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.js"></script>
+
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.7.0/ui-bootstrap.min.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.6.0/ui-bootstrap-tpls.min.js"></script>
+
+  <script src="src/ez-confirm.js"></script>
+  <script src="dist/ez-confirm-tpl.js"></script>
+
+  <script type="text/javascript">
+    angular.module('myApp', ['ui.bootstrap', 'ez.confirm'])
+    .controller('myCtrl', ['$scope', 'ezConfirm', function($scope, ezConfirm)  {
+      $scope.remove = function() {
+        ezConfirm.create(function() {
+          alert('callback on confirm');
+        });
+      };
+    }]);
+  </script>
+
+</head>
+
+<body ng-app="myApp">
+  <br>
+  <br>
+  <br>
+  <br>
+  <div ng-controller="myCtrl">
+    <a class="btn btn-large btn-danger" ng-click="remove()">Delete</a>
+  </div>
+</body>
+
+</html>
