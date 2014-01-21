@@ -2,7 +2,7 @@
   "name": "ez-confirm",
   "description": "Angular confirm dialog",
   "keywords": [],
-  "version": "0.0.0",
+  "version": "0.0.1",
   "private": false,
   "author": "Joris de Wit",
   "repository": {
