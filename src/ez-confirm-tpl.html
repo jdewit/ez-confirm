@@ -1,4 +1,4 @@
-<div class="ez-confirm modal">
+<div class="ez-confirm">
   <div class="modal-header">
     <a type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</a>
     <h3>{{ heading }}</h3>
@@ -7,7 +7,7 @@
     <p class="lead">{{ text }}</p>
   </div>
   <div class="modal-footer">
-    <a class="btn" ng-click="cancel()"><i class="icon-remove"></i>Cancel</a>
-    <button ng-click="ok()" class="btn btn-large btn-primary"><i class="icon-ok"></i>Yes</button>
+    <a class="btn btn-default" ng-click="cancel()"><i class="fa fa-times"></i>Cancel</a>
+    <button ng-click="ok()" class="btn btn-lg btn-primary"><i class="fa fa-check"></i>Yes</button>
   </div>
 </div>
