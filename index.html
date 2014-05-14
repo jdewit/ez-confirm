@@ -22,6 +22,13 @@
           alert('callback on confirm');
         });
       };
+      
+      $scope.delete = function() {
+        ezConfirm.create('Confirm Delete','Are you sure you want to Delete?', function() {
+          alert('delete callback on confirm');
+        });
+      };
+      
     }]);
   </script>
 
@@ -34,6 +41,8 @@
   <br>
   <div ng-controller="myCtrl">
     <a class="btn btn-large btn-danger" ng-click="remove()">Delete</a>
+    <br/>
+    <a class="btn btn-large btn-danger" ng-click="delete()">Custom Delete</a>
   </div>
 </body>
 
