@@ -26,7 +26,7 @@ angular.module('ez.confirm', ['ui.bootstrap'])
             scope: { trigger: '@focusMe' },
             link: function(scope, element) {
                 scope.$watch('trigger', function(value) {
-                    if(value === "true") {
+                    if(value === 'true') {
                         $timeout(function() {
                             element[0].focus();
                         });
@@ -38,7 +38,7 @@ angular.module('ez.confirm', ['ui.bootstrap'])
 
     .directive('ngEnter', function () {
         return function (scope, element, attrs) {
-            element.bind("keydown keypress", function (event) {
+            element.bind('keydown keypress', function (event) {
                 if(event.which === 13) {
                     scope.$apply(function (){
                         scope.$eval(attrs.ngEnter);
