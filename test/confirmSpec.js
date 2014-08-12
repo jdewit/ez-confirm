@@ -1,6 +1,6 @@
-describe('ezConfirmSpec', function() {
+describe('EzConfirmSpec', function() {
 
-  var _ezConfirm, _ezConfirmCtrl, _scope;
+  var _EzConfirm, _EzConfirmCtrl, _scope;
 
   beforeEach(function() {
     module('ez.confirm');
@@ -10,11 +10,11 @@ describe('ezConfirmSpec', function() {
     });
   });
 
-  beforeEach(inject(function($rootScope, ezConfirm, $controller) {
-    _ezConfirm = ezConfirm;
+  beforeEach(inject(function($rootScope, EzConfirm, $controller) {
+    _EzConfirm = EzConfirm;
     _scope = $rootScope.$new();
 
-    _ezConfirmCtrl = $controller('ezConfirmCtrl', {
+    _EzConfirmCtrl = $controller('EzConfirmCtrl', {
       $scope: _scope,
       $modalInstance: window.$modalInstance,
       heading: 'dude',
@@ -25,7 +25,7 @@ describe('ezConfirmSpec', function() {
   it('should show & hide a dialog and trigger callback', function() {
     var callbackCount = 0;
 
-    _ezConfirm.create('Hey', 'dawg', function() {
+    _EzConfirm.create('Hey', 'dawg', function() {
       callbackCount++;
     });
 
@@ -39,7 +39,7 @@ describe('ezConfirmSpec', function() {
   it('should show defaults if callback is first param', function() {
     var callbackCount = 0;
 
-    _ezConfirm.create(function() {
+    _EzConfirm.create(function() {
       callbackCount++;
     });
 
@@ -53,7 +53,7 @@ describe('ezConfirmSpec', function() {
   it('should set text if callback is 2nd param', function() {
     var callbackCount = 0;
 
-    _ezConfirm.create('okok', function() {
+    _EzConfirm.create('okok', function() {
       callbackCount++;
     });
 

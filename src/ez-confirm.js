@@ -1,11 +1,11 @@
 angular.module('ez.confirm', ['ui.bootstrap'])
 
-  .constant('ezConfirmConfig', {
+  .constant('EzConfirmConfig', {
     heading: 'Confirm',
     text: 'Are you sure you want to do this?'
   })
 
-  .controller('ezConfirmCtrl', ['$scope', '$modalInstance', 'heading', 'text', function($scope, $modalInstance, heading, text) {
+  .controller('EzConfirmCtrl', ['$scope', '$modalInstance', 'heading', 'text', function($scope, $modalInstance, heading, text) {
 
     $scope.cancel = function() {
       $modalInstance.dismiss();
@@ -21,11 +21,11 @@ angular.module('ez.confirm', ['ui.bootstrap'])
 
   }])
 
-  .factory('ezConfirm', ['$modal', 'ezConfirmConfig', function($modal, ezConfirmConfig) {
+  .factory('EzConfirm', ['$modal', 'EzConfirmConfig', function($modal, EzConfirmConfig) {
     return {
       create: function(param1, param2, param3) {
-        var heading = ezConfirmConfig.heading,
-            text = ezConfirmConfig.text,
+        var heading = EzConfirmConfig.heading,
+            text = EzConfirmConfig.text,
             callback = false;
 
         if (typeof param1 === 'function') {
@@ -41,7 +41,7 @@ angular.module('ez.confirm', ['ui.bootstrap'])
 
         $modal.open({
           templateUrl: 'ez-confirm-tpl.html',
-          controller: 'ezConfirmCtrl',
+          controller: 'EzConfirmCtrl',
           resolve: {
             heading: function() {
               return heading;
