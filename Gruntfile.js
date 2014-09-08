@@ -42,7 +42,7 @@ module.exports = function(grunt) {
           }
         },
         files: {
-          src: ['src/**/*.js', 'test/*.js']
+          src: ['src/*.js', 'test/*.js']
         },
       }
     },
@@ -78,9 +78,8 @@ module.exports = function(grunt) {
         compress: true
       },
       dist: {
-        files: {
-          'dist/ez-confirm.min.js': ['src/**/*.js']
-        }
+        src: 'src/*.js',
+        dest: 'dist/ez-confirm.min.js'
       }
     },
     watch: {

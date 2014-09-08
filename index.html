@@ -16,15 +16,15 @@
 
   <script type="text/javascript">
     angular.module('myApp', ['ui.bootstrap', 'ez.confirm'])
-    .controller('myCtrl', ['$scope', 'ezConfirm', function($scope, ezConfirm)  {
+    .controller('myCtrl', ['$scope', 'EzConfirm', function($scope, EzConfirm)  {
       $scope.remove = function() {
-        ezConfirm.create(function() {
+        EzConfirm.create(function() {
           alert('callback on confirm');
         });
       };
       
       $scope.delete = function() {
-        ezConfirm.create('Confirm Delete','Are you sure you want to Delete?', function() {
+        EzConfirm.create('Confirm Delete','Are you sure you want to Delete?', function() {
           alert('delete callback on confirm');
         });
       };
