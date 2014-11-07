@@ -1,4 +1,4 @@
-angular.module('ez.confirm', ['ui.bootstrap'])
+angular.module('ez.confirm', [])
 
   .constant('EzConfirmConfig', {
     heading: 'Confirm',

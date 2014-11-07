@@ -1,6 +1,6 @@
 {
   "name": "ez-confirm",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": [
     "dist/ez-confirm.min.js"
   ],
@@ -9,8 +9,8 @@
     "bower_components"
   ],
   "devDependencies": {
-    "angular": "latest",
-    "angular-bootstrap": "*",
-    "angular-mocks": "latest"
+    "angular": "1.2.*",
+    "angular-bootstrap": "0.11.*",
+    "angular-mocks": "1.2.*"
   }
 }
