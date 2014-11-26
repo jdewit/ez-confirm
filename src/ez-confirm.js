@@ -23,16 +23,29 @@ angular.module('ez.confirm', [])
 
   .factory('EzConfirm', ['$modal', 'EzConfirmConfig', function($modal, EzConfirmConfig) {
     return {
-      create: function(param1, param2, param3) {
+      create: function(param1, param2, param3, param4) {
         var heading = EzConfirmConfig.heading,
             text = EzConfirmConfig.text,
-            callback = false;
+            callback = false,
+            dismissCallback = false;
 
-        if (typeof param1 === 'function') {
+        if ((typeof param1 === 'function') && (typeof param2 === 'function')) {
           callback = param1;
-        } else if (typeof param2 === 'function')  {
+          dismissCallback = param2;
+        } else if ((typeof param2 === 'function') && (typeof param3 === 'function')) {
           text = param1;
           callback = param2;
+          dismissCallback = param3;
+        } else if (typeof param1 === 'function') {
+          callback = param1;
+        } else if (typeof param2 === 'function') {
+          text = param1;
+          callback = param2;
+        } else if (typeof param4 === 'function') {
+          heading = param1;
+          text = param2;
+          callback = param3;
+          dismissCallback = param4;
         } else {
           heading = param1;
           text = param2;
@@ -52,6 +65,10 @@ angular.module('ez.confirm', [])
           }
         }).result.then(function() {
           callback();
+        }, function() {
+          if (typeof dismissCallback === 'function') {
+            dismissCallback();
+          }
         });
       }
     };
