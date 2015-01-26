@@ -9,7 +9,11 @@ angular.module('ez.confirm', [])
 
   .controller('EzConfirmCtrl', ['$scope', '$modalInstance', 'EzConfirmConfig', 'config', function($scope, $modalInstance, EzConfirmConfig, config) {
 
-    $scope.options = angular.extend({}, EzConfirmConfig, config);
+    $scope.options = angular.extend({}, EzConfirmConfig);
+
+    if (angular.isObject(config)) {
+      $scope.options = angular.extend({}, config);
+    }
 
     $scope.dismiss = $modalInstance.dismiss;
 
