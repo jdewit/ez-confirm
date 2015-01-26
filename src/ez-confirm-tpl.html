@@ -1,13 +1,19 @@
 <div class="ez-confirm">
   <div class="modal-header">
-    <a type="button" class="close" ng-click="cancel()" aria-hidden="true">&times;</a>
-    <h3>{{ heading }}</h3>
+    <a type="button" class="close" ng-click="dismiss()" aria-hidden="true">&times;</a>
+    <h3 class="modal-title">{{ options.heading }}</h3>
   </div>
   <div class="modal-body">
-    <p class="lead">{{ text }}</p>
+    <p class="lead">{{ options.text }}</p>
   </div>
   <div class="modal-footer">
-    <a class="btn btn-default" ng-click="cancel()"><i class="fa fa-times"></i>Cancel</a>
-    <button ng-click="ok()" class="btn btn-lg btn-primary"><i class="fa fa-check"></i>Yes</button>
+    <a class="cancel-btn btn btn-default" ng-click="dismiss()">
+      <i class="glyphicon glyphicon-remove"></i>
+      {{ options.cancelBtn }}
+    </a>
+    <button ng-click="close()" class="confirm-btn btn btn-lg btn-primary" ez-focus>
+      <i class="glyphicon glyphicon-ok"></i>
+      {{ options.confirmBtn }}
+    </button>
   </div>
 </div>

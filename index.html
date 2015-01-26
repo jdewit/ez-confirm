@@ -2,69 +2,37 @@
 <html>
 
 <head>
-  <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
-  <link href="http://netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
-  <!-- <link href="dist/ez-confirm.min.css" rel="stylesheet"> -->
+  <link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.0/css/bootstrap.css" rel="stylesheet">
+  <link href="dist/ez-confirm.min.css" rel="stylesheet">
 
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.js"></script>
 
-  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.7.0/ui-bootstrap.min.js"></script>
-  <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.6.0/ui-bootstrap-tpls.min.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.11.0/ui-bootstrap-tpls.min.js"></script>
 
+  <script src="//rawgit.com/jdewit/ez-focus/master/dist/ez-focus.min.js"></script>
   <script src="src/ez-confirm.js"></script>
   <script src="dist/ez-confirm-tpl.js"></script>
 
   <script type="text/javascript">
-    angular.module('myApp', [
-      'ui.bootstrap',
-      'ez.confirm']
-    ).controller('myCtrl', [
-    '$scope',
-    'EzConfirm',
-    function(
-      $scope,
-      EzConfirm
-    ) {
+    angular.module('myApp', ['ui.bootstrap', 'ez.confirm'])
 
-      $scope.example1 = function() {
-        EzConfirm.create(function() {
-          alert('You confirmed!');
-        });
-      };
+    angular.module('myApp', ['ui.bootstrap', 'ez.confirm', 'ez.focus'])
 
-      $scope.example2 = function() {
-        EzConfirm.create(function() {
-          alert('You confirmed!');
+    .controller('myCtrl', ['$scope', 'EzConfirm', function($scope, EzConfirm)  {
+
+      $scope.remove = function() {
+        EzConfirm.create().then(function() {
+          alert('confirmed');
         }, function() {
-          alert('You cancelled or dismissed.');
+          alert('declined');
         });
       };
 
-      $scope.example3 = function() {
-        EzConfirm.create('Are you sure?', function() {
-          alert('You confirmed!');
-        });
-      };
-
-      $scope.example4 = function() {
-        EzConfirm.create('Are you sure?', function() {
-          alert('You confirmed!');
+      $scope.delete = function() {
+        EzConfirm.create({heading: 'Confirm Delete', text: 'Are you sure you want to Delete?'}).then(function() {
+          alert('delete confirmed');
         }, function() {
-          alert('You cancelled or dismissed.');
-        });
-      };
-
-      $scope.example5 = function() {
-        EzConfirm.create('Confirm Action', 'Are you sure?', function() {
-          alert('You confirmed!');
-        });
-      };
-
-      $scope.example6 = function() {
-        EzConfirm.create('Confirm Action', 'Are you sure?', function() {
-          alert('You confirmed!');
-        }, function() {
-          alert('You cancelled or dismissed.');
+          alert('delete cancelled');
         });
       };
       
@@ -74,25 +42,11 @@
 </head>
 
 <body ng-app="myApp">
-  <br />
-  <br />
-  <div ng-controller="myCtrl" style="padding-left: 20px;">
-    <a class="btn btn-large btn-default" ng-click="example1()">Example 1</a>
-    <br />
-    <br />
-    <a class="btn btn-large btn-primary" ng-click="example2()">Example 2</a>
-    <br />
-    <br />
-    <a class="btn btn-large btn-success" ng-click="example3()">Example 3</a>
-    <br />
-    <br />
-    <a class="btn btn-large btn-info" ng-click="example4()">Example 4</a>
-    <br />
-    <br />
-    <a class="btn btn-large btn-warning" ng-click="example5()">Example 5</a>
-    <br />
-    <br />
-    <a class="btn btn-large btn-danger" ng-click="example6()">Example 6</a>
+  <div ng-controller="myCtrl">
+    <h3>Default confirm</h3>
+    <a class="btn btn-large btn-danger" ng-click="remove()">Delete</a>
+    <h3>Custom confirm</h3>
+    <a class="btn btn-large btn-danger" ng-click="delete()">Delete</a>
   </div>
 </body>
 

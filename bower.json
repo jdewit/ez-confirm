@@ -8,9 +8,11 @@
     "node_modules",
     "bower_components"
   ],
+  "dependencies": {
+    "ez-focus": "*"
+  },
   "devDependencies": {
     "angular": "1.2.*",
-    "angular-bootstrap": "0.11.*",
     "angular-mocks": "1.2.*"
   }
 }

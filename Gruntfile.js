@@ -42,24 +42,18 @@ module.exports = function(grunt) {
           }
         },
         files: {
-          src: ['src/*.js', 'test/*.js']
+          src: ['src/*.js']
         },
       }
     },
-    karma: {
-      unit: {
-        configFile: 'karma.conf.js',
-        background: false
+    less: {
+      options: {
+        compress: true
       },
-      singleRun: {
-        configFile: 'karma.conf.js',
-        background: false,
-        singleRun: true
-      }
-    },
-    shell: {
-      clearCoverage: {
-        command: 'rm -rf test/coverage/*'
+      styles: {
+        files: {
+          'dist/ez-confirm.min.css': ['src/*.less']
+        }
       }
     },
     ngtemplates:  {
@@ -84,8 +78,8 @@ module.exports = function(grunt) {
     },
     watch: {
       all: {
-        files: ['Gruntfile.js', 'src/**/*', 'test/**/*.js'],
-        tasks: ['default', 'karma:unit:run'],
+        files: ['Gruntfile.js', 'src/**/*'],
+        tasks: ['default'],
         options: {
           livereload: 9090,
         }
@@ -96,12 +90,10 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-bump');
   grunt.loadNpmTasks('grunt-shell');
-  grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-angular-templates');
 
-  grunt.registerTask('default', ['jshint', 'ngtemplates', 'uglify']);
-  grunt.registerTask('dev', ['shell:clearCoverage', 'karma:unit:start', 'watch']);
-  grunt.registerTask('test', ['karma:unit:singleRun']);
+  grunt.registerTask('default', ['jshint', 'ngtemplates', 'uglify', 'less']);
 };

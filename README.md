@@ -6,60 +6,42 @@ Angular confirm dialog
 Demo
 ====
 
-http://embed.plnkr.co/EL6foG/preview
+View <a href="http://cdn.rawgit.com/jdewit/ez-confirm/master/index.html">DEMO</a>.
 
+Dependencies
+============
+
+- Either <a href="http://angular-ui.github.io/bootstrap">angular-bootstrap</a> or <a href="http://github.com/jdewit/ez-modal">ez-modal</a>
+- <a href="http://github.com/jdewit/ez-focus">ez-focus</a> to focus confirm button on modal show
 
 Usage
 =====
 
-Example 1: (no customization with confirmation callback)
-
+Default
 ```js
-EzConfirm.create(function() {
-  alert('You confirmed!');
-});
-```
-
-Example 2: (no customization with confirmation and dismissal callbacks)
-
-```js
-EzConfirm.create(function() {
+EzConfirm.create().then(function() {
   alert('You confirmed!');
 }, function() {
   alert('You cancelled or dismissed.');
 });
 ```
 
-Example 3: (custom text with confirmation callback)
-
+Custom heading & text config
 ```js
-EzConfirm.create('Are you sure?', function() {
-  alert('You confirmed!');
-});
-```
-
-Example 4: (custom text with confirmation and dismissal callbacks)
-
-```js
-EzConfirm.create('Are you sure?', function() {
-  alert('You confirmed!');
+EzConfirm.create({heading: 'Ok but...', text: 'Are you sure Steven?'}).then(function() {
+  alert('Fire the missiles!');
 }, function() {
-  alert('You cancelled or dismissed.');
+  alert('Ok maybe next time?');
 });
 ```
 
-Example 5: (custom header and text with confirmation callback)
-```js
-EzConfirm.create('Confirm Action', 'Are you sure?', function() {
-  alert('You confirmed!');
-});
-```
+EzConfirmConfig Constant
+========================
+Set the config globally
 
-Example 6: (custom header and text with confirmation and dismissal callbacks)
-```js
-EzConfirm.create('Confirm Action', 'Are you sure?', function() {
-  alert('You confirmed!');
-}, function() {
-  alert('You cancelled or dismissed.');
+app.run(function(EzConfirmConfig) {
+  EzConfirmConfig.heading = 'My site-wide confirm heading';
+  EzConfirmConfig.text = 'My site-wide confirm heading';
+  EzConfirmConfig.confirmBtn = 'Yes yes';
+  EzConfirmConfig.cancelBtn = 'No no';
 });
-```
