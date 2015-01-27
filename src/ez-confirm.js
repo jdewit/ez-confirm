@@ -7,12 +7,22 @@ angular.module('ez.confirm', [])
     cancelBtn: 'Cancel',
   })
 
-  .controller('EzConfirmCtrl', ['$scope', '$modalInstance', 'EzConfirmConfig', 'config', function($scope, $modalInstance, EzConfirmConfig, config) {
+  .controller('EzConfirmCtrl', [
+    '$scope',
+    '$modalInstance',
+    'EzConfirmConfig',
+    'config',
+    function(
+      $scope,
+      $modalInstance,
+      EzConfirmConfig,
+      config
+    ) {
 
     $scope.options = angular.extend({}, EzConfirmConfig);
 
     if (angular.isObject(config)) {
-      $scope.options = angular.extend({}, config);
+      angular.extend($scope.options, config);
     }
 
     $scope.dismiss = $modalInstance.dismiss;
@@ -21,7 +31,12 @@ angular.module('ez.confirm', [])
 
   }])
 
-  .factory('EzConfirm', ['$modal', function($modal) {
+  .factory('EzConfirm', [
+    '$modal',
+    function(
+      $modal
+    ) {
+
     return {
       create: function(config) {
         return $modal.open({
@@ -35,5 +50,4 @@ angular.module('ez.confirm', [])
         }).result;
       }
     };
-  }])
-;
+  }]);
