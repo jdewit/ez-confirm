@@ -8,7 +8,10 @@ angular.module('ez.confirm').run(['$templateCache', function($templateCache) {
     "    <h3 class=\"modal-title\">{{ options.heading }}</h3>\n" +
     "  </div>\n" +
     "  <div class=\"modal-body\">\n" +
-    "    <p class=\"lead\">{{ options.text }}</p>\n" +
+    "    <p class=\"lead\">\n" +
+    "      {{ !data.html ? options.text : '' }}\n" +
+    "      <span ng-bind-html=\"data.html\" ng-if=\"data.html\"></span>\n" +
+    "    </p>\n" +
     "  </div>\n" +
     "  <div class=\"modal-footer\">\n" +
     "    <a class=\"cancel-btn btn btn-default\" ng-click=\"dismiss()\">\n" +

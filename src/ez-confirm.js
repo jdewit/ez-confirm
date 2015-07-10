@@ -3,17 +3,20 @@ angular.module('ez.confirm', [])
   .constant('EzConfirmConfig', {
     heading: 'Confirmation Required',
     text: 'Are you sure you want to proceed?',
+    html: null,
     confirmBtn: 'Yes',
     cancelBtn: 'Cancel',
   })
 
   .controller('EzConfirmCtrl', [
     '$scope',
+    '$sce',
     '$modalInstance',
     'EzConfirmConfig',
     'config',
     function(
       $scope,
+      $sce,
       $modalInstance,
       EzConfirmConfig,
       config
@@ -23,6 +26,12 @@ angular.module('ez.confirm', [])
 
     if (angular.isObject(config)) {
       angular.extend($scope.options, config);
+    }
+
+    if (null !== $scope.options.html && undefined !== $scope.options.html) {
+      $scope.data = {
+        html: $sce.trustAsHtml($scope.options.html)
+      };
     }
 
     $scope.dismiss = $modalInstance.dismiss;
