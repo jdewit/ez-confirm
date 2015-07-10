@@ -4,7 +4,10 @@
     <h3 class="modal-title">{{ options.heading }}</h3>
   </div>
   <div class="modal-body">
-    <p class="lead">{{ options.text }}</p>
+    <p class="lead">
+      {{ !data.html ? options.text : '' }}
+      <span ng-bind-html="data.html" ng-if="data.html"></span>
+    </p>
   </div>
   <div class="modal-footer">
     <a class="cancel-btn btn btn-default" ng-click="dismiss()">
