@@ -6,6 +6,11 @@ angular.module('ez.confirm', [])
     html: null,
     confirmBtn: 'Yes',
     cancelBtn: 'Cancel',
+    hideCloseButton: false,
+    cancelBtnCss: 'cancel-btn btn btn-default',
+    cancelIconCss: 'glyphicon glyphicon-remove',
+    confirmBtnCss: 'confirm-btn btn btn-lg btn-primary',
+    confirmIconCss: 'glyphicon glyphicon-ok',
   })
 
   .controller('EzConfirmCtrl', [
